@@ -8,6 +8,9 @@ npm i -D eslint-plugin-import @typescript-eslint/parser eslint-import-resolver-t
 npm i -D prettier eslint-config-prettier eslint-plugin-prettier eslint-plugin-react-hooks\
 npm i -D sass\
 npm install react-router-dom redux react-redux @reduxjs/toolkit\
+npm install -D vitest\
+npm i -D @testing-library/react @testing-library/jest-dom\
+npm i -D istanbul @vitest/coverage-istanbul jsdom\
 
 
 
