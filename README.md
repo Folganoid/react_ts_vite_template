@@ -7,6 +7,9 @@ npm install -D eslint-plugin-react@latest @typescript-eslint/eslint-plugin@lates
 npm i -D eslint-plugin-import @typescript-eslint/parser eslint-import-resolver-typescript\
 npm i -D prettier eslint-config-prettier eslint-plugin-prettier eslint-plugin-react-hooks\
 npm i -D sass\
+npm install react-router-dom redux react-redux @reduxjs/toolkit\
+
+
 
 
 

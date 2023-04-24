@@ -15,7 +15,6 @@
     "baseUrl": "./src",
     "resolveJsonModule": true,
     "allowJs": true,
-    "types": ["jest"],
   },
   "include": [
     "./src/**/*",
