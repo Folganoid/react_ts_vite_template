@@ -11,8 +11,3 @@ npm install react-router-dom redux react-redux @reduxjs/toolkit\
 npm install -D vitest\
 npm i -D @testing-library/react @testing-library/jest-dom\
 npm i -D istanbul @vitest/coverage-istanbul jsdom\
-
-
-
-
-
