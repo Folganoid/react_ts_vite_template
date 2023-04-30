@@ -1,4 +1,5 @@
 import React from 'react';
+import GitHub from '@mui/icons-material/GitHub';
 import {
   AppBar,
   Box,
@@ -11,12 +12,16 @@ import {
   Tooltip,
   Typography,
 } from '@mui/material';
-import GitHub from '@mui/icons-material/GitHub';
 import Logo from '../../assets/images/rs.svg';
+import { changeTheme } from '../../store/themeSlice';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 
 export default function Footer() {
+  const dispatch = useAppDispatch();
+  const { isDarkMode } = useAppSelector((state) => state.theme);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
+
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
@@ -24,7 +29,9 @@ export default function Footer() {
     setAnchorEl(null);
   };
 
-  const label = { inputProps: { 'aria-label': 'Switch demo' } };
+  const switchTheme = () => {
+    dispatch(changeTheme());
+  };
 
   return (
     <AppBar
@@ -35,7 +42,6 @@ export default function Footer() {
         position: 'fixed',
         bottom: 0,
         left: 0,
-        opacity: '90%',
         height: 30,
       }}
     >
@@ -44,7 +50,9 @@ export default function Footer() {
         variant="dense"
         style={{ minHeight: '30px' }}
       >
-        <Typography variant="h6">2023 &copy;</Typography>
+        <Typography variant="h6" color="inherit">
+          2023 &copy;
+        </Typography>
         <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
           <Tooltip title="Authors">
             <IconButton
@@ -64,6 +72,7 @@ export default function Footer() {
             open={open}
             onClose={handleClose}
             onClick={handleClose}
+            color="inherit"
             PaperProps={{
               elevation: 0,
               sx: {
@@ -113,15 +122,23 @@ export default function Footer() {
             </MenuItem>
           </Menu>
         </Box>
-        <IconButton size="small" sx={{ ml: 2, mt: 0.5 }}>
+        <IconButton size="small" sx={{ ml: 2 }} color="inherit">
           <Link href="https://rs.school/">
-            <img style={{ width: 28, height: 28 }} src={Logo}></img>
+            <img
+              style={{ width: 28, height: 28, opacity: isDarkMode ? 1 : 0.4 }}
+              src={Logo}
+              alt="rsschool logo"
+            />
           </Link>
         </IconButton>
         <div style={{ display: 'flex', margin: '0 30px', alignItems: 'center' }}>
-          <Typography variant="body1">Light</Typography>
-          <Switch {...label} defaultChecked />
-          <Typography variant="body1">Dark</Typography>
+          <Switch
+            inputProps={{ 'aria-label': 'theme' }}
+            onChange={switchTheme}
+            checked={isDarkMode}
+            color="default"
+          />
+          <Typography variant="body1">{isDarkMode ? 'Dark' : 'Light'}</Typography>
         </div>
       </Toolbar>
     </AppBar>
